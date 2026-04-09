@@ -1,0 +1,224 @@
+/* ========================================== */
+/* 1. ESTILOS GLOBALES Y UTILIDADES           */
+/* ========================================== */
+html {
+    scroll-behavior: smooth; 
+    /* ¡NUEVO! Evita que el menú fijo tape los títulos de las secciones */
+    scroll-padding-top: 100px; 
+}
+
+.letter-spacing-2 {
+    letter-spacing: 2px;
+}
+
+.opacity-90 {
+    opacity: 0.9;
+}
+
+/* ========================================== */
+/* 2. NAVEGACIÓN: BARRA PRINCIPAL             */
+/* ========================================== */
+.navbar {
+    /* Fondo oscuro pero con mucha transparencia (60% opaco) */
+    background-color: rgba(15, 15, 20, 0.6) !important; 
+    
+    /* Desenfoque fuerte y saturación para resaltar los colores que pasan por detrás */
+    backdrop-filter: blur(15px) saturate(150%);
+    -webkit-backdrop-filter: blur(15px) saturate(150%);
+    
+    /* Pequeñísima línea brillante en la parte inferior para definir el límite del cristal */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    
+    transition: all 0.3s ease;
+}
+
+.navbar-brand {
+    font-size: 1.6rem;
+    font-weight: 800;          /* Letra muy gruesa para el logo/nombre */
+    letter-spacing: 1px;
+    text-transform: uppercase; /* Todo en mayúsculas para más impacto */
+}
+
+/* Enlaces de la barra (Solo visibles y estilizados en PC) */
+@media (min-width: 992px) {
+    .navbar-nav .nav-link {
+        font-size: 1.1rem;
+        font-weight: 500;
+        letter-spacing: 0.5px;
+        margin-left: 15px;
+        transition: color 0.3s ease, transform 0.3s ease;
+    }
+
+    .navbar-nav .nav-link:hover {
+        color: #0d6efd !important;
+        transform: translateY(-2px);
+    }
+}
+
+/* ========================================== */
+/* 3. NAVEGACIÓN: MENÚ LATERAL (OFFCANVAS)    */
+/* ========================================== */
+.offcanvas-end {
+    /* Fondo transparente y efecto cristal */
+    background-color: rgba(15, 15, 20, 0.4) !important; 
+    backdrop-filter: blur(20px) saturate(150%);
+    -webkit-backdrop-filter: blur(20px) saturate(150%);
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    
+    /* Tamaños adaptables */
+    width: 60vw !important; 
+    max-width: 350px;
+}
+
+/* Sombra trasera más suave */
+.offcanvas-backdrop.show {
+    opacity: 0.3 !important; 
+}
+
+/* Estilo de los enlaces en el panel lateral */
+.offcanvas-body .nav-link {
+    font-size: 1.3rem;
+    padding: 18px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.offcanvas-body .nav-link:hover {
+    color: #0d6efd !important;
+    transform: translateX(10px);
+}
+
+.offcanvas-body .nav-link:active {
+    transform: scale(0.95);
+}
+
+/* ========================================== */
+/* 4. SECCIÓN HERO (PORTADA PRINCIPAL)        */
+/* ========================================== */
+.hero-modern {
+    position: relative; 
+    min-height: 85vh; 
+    padding-top: 100px; 
+    overflow: hidden; 
+    background-color: #000; 
+}
+
+/* El pseudoelemento que contiene la imagen y el difuminado */
+/* El pseudoelemento que contiene la imagen y el difuminado */
+.hero-modern::before {
+    content: '';
+    position: absolute;
+    top: -20px; /* Aumentamos el margen negativo para que no queden bordes blancos por el blur fuerte */
+    left: -20px;
+    right: -20px;
+    bottom: -20px;
+    /* Usamos un link directo a un JPG en lugar de la URL de la página web de Unsplash */
+    background-image: url('https://images.unsplash.com/photo-1604754742629-3e5728249d73?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    /* AQUÍ APLICAMOS EL DESENFOQUE 15 */
+    filter: blur(10px) brightness(0.4) saturate(1.2); 
+    z-index: 1; 
+}
+
+/* ========================================== */
+/* IMPORTANTE: Capa del texto encima de la imagen */
+/* ========================================== */
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+/* Ajuste responsivo de los botones de la portada */
+.hero-content .btn {
+    transition: all 0.3s ease;
+}
+
+/* Solo se aplica en celulares (pantallas menores a 768px) */
+@media (max-width: 767px) {
+    .hero-content .btn {
+        /* Equivale a una escala más pequeña y cómoda para los pulgares */
+        font-size: 0.95rem;
+        padding: 12px 25px !important;
+        width: 100%; /* Hace que los botones ocupen el ancho disponible */
+    }
+}
+
+/* ========================================== */
+/* 5. FORMULARIOS Y CONTACTO                  */
+/* ========================================== */
+.form-control:focus {
+    background-color: #fff !important;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.1); /* Error de tipeo corregido aquí */
+    border: 1px solid #0d6efd !important;
+}
+
+.form-control-lg {
+    font-size: 1rem; 
+}
+
+/* ========================================== */
+/* 6. FOOTER (PIE DE PÁGINA)                  */
+/* ========================================== */
+.footer-links li {
+    margin-bottom: 10px; 
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.7); 
+    transition: color 0.3s ease;
+    font-size: 0.95rem;
+}
+
+.footer-links a:hover {
+    color: #0d6efd; 
+}
+
+.footer p {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* ========================================== */
+/* 7. ELEMENTOS FLOTANTES (REDES SOCIALES)    */
+/* ========================================== */
+.floating-socials {
+    position: fixed;
+    bottom: 30px; 
+    right: 30px;  
+    display: flex;
+    flex-direction: column; 
+    gap: 15px; 
+    z-index: 1000; 
+}
+
+.social-bubble {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 32px;
+    text-decoration: none;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.social-bubble:hover {
+    transform: scale(1.1) translateY(-5px); 
+    color: white;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+}
+
+.wa-bubble {
+    background-color: #25D366; 
+}
+
+.fb-bubble {
+    background-color: #1877F2; 
+}
