@@ -19,12 +19,8 @@ html {
 /* 2. NAVEGACIÓN: BARRA PRINCIPAL             */
 /* ========================================== */
 .navbar {
-    /* Fondo oscuro pero con mucha transparencia (60% opaco) */
-    background-color: rgba(15, 15, 20, 0.6) !important; 
-    
-    /* Desenfoque fuerte y saturación para resaltar los colores que pasan por detrás */
-    backdrop-filter: blur(15px) saturate(150%);
-    -webkit-backdrop-filter: blur(15px) saturate(150%);
+    /* Mantenemos la estructura transparente en el contenedor principal */
+    background-color: transparent !important; 
     
     /* Pequeñísima línea brillante en la parte inferior para definir el límite del cristal */
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
@@ -33,13 +29,68 @@ html {
     transition: all 0.3s ease;
 }
 
+/* Aislamos el difuminado en una capa trasera (::before) para evitar romper el difuminado del Dropdown */
+.navbar::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    
+    /* Fondo oscuro pero con mucha transparencia (60% opaco) */
+    background-color: rgba(15, 15, 20, 0.6); 
+    
+    /* Desenfoque fuerte y saturación para resaltar los colores que pasan por detrás */
+    backdrop-filter: blur(15px) saturate(150%);
+    -webkit-backdrop-filter: blur(15px) saturate(150%);
+    
+    z-index: -1;
+}
+
 .navbar-brand {
     font-size: 1.6rem;
     font-weight: 800;          /* Letra muy gruesa para el logo/nombre */
     letter-spacing: 1px;
     text-transform: uppercase; /* Todo en mayúsculas para más impacto */
 }
+/* --- ESTILOS DEL MENÚ DESPLEGABLE (DROPDOWN CRISTAL ANTIBUGS) --- */
+.custom-dropdown {
+    /* 1. Transparencia */
+    background-color: rgba(15, 15, 20, 0.6) !important; 
+    
+    /* 2. Forzar el difuminado en PC */
+    backdrop-filter: blur(20px) saturate(150%) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(150%) !important;
+    
+    /* 3. El truco de magia para evitar que Popper.js rompa el efecto */
+    background-clip: padding-box !important;
+    transform: translateZ(0); 
+    will-change: filter, transform;
+    
+    /* 4. Estética de la caja */
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 12px !important;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.6) !important;
+    padding: 10px 0 !important;
+    margin-top: 15px !important; /* Lo separa un poquito más de la barra principal */
+}
 
+/* Efecto al pasar el mouse por las opciones del desplegable */
+.custom-dropdown .dropdown-item {
+    padding: 12px 20px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.8) !important; 
+    transition: all 0.3s ease;
+}
+
+.custom-dropdown .dropdown-item:hover {
+    background-color: rgba(13, 110, 253, 0.25) !important; /* Azul sutil */
+    color: #fff !important; 
+    transform: translateX(8px); /* Deslizamiento derecho */
+}
+
+/* El pequeño separador entre opciones */
+.dropdown-divider.border-secondary {
+    border-color: rgba(255, 255, 255, 0.1) !important;
+}
 /* Enlaces de la barra (Solo visibles y estilizados en PC) */
 @media (min-width: 992px) {
     .navbar-nav .nav-link {
@@ -55,7 +106,6 @@ html {
         transform: translateY(-2px);
     }
 }
-
 /* ========================================== */
 /* 3. NAVEGACIÓN: MENÚ LATERAL (OFFCANVAS)    */
 /* ========================================== */

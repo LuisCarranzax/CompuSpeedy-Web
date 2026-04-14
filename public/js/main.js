@@ -1,5 +1,5 @@
 // --- AUTO-CERRAR MENÚ LATERAL EN MÓVILES ---
-const enlacesMenu = document.querySelectorAll('.offcanvas-body .nav-link');
+const enlacesMenu = document.querySelectorAll('.offcanvas-body .nav-link:not(.dropdown-toggle), .offcanvas-body .dropdown-item');
 const menuLateral = document.getElementById('menuPrincipal');
 
 if (menuLateral) {

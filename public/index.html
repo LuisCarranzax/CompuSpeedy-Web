@@ -10,7 +10,7 @@
     <title>Compu Speedy | Servicio Técnico</title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top py-3" style="background-color: rgba(33, 37, 41, 0.85); backdrop-filter: blur(10px);">
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top py-3">
         <div class="container">
             <a class="navbar-brand text-white fw-bold fs-3" href="#">Compu Speedy</a>
             
@@ -24,8 +24,16 @@
                     <li class="nav-item">
                         <a class="nav-link text-white opacity-75 fw-bold" href="#inicio">Inicio</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white opacity-75 fw-bold" href="#servicios">Servicios</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-white opacity-75 fw-bold" href="#" id="serviciosDesktopDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Servicios
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark custom-dropdown mt-2" aria-labelledby="serviciosDesktopDropdown">
+                            <li><a class="dropdown-item" href="instalacion.html">Instalación de Programas</a></li>
+                            <li><a class="dropdown-item" href="reparacion.html">Reparación de Hardware</a></li>
+                            <li><hr class="dropdown-divider border-secondary"></li>
+                            <li><a class="dropdown-item" href="index.html#servicios">Ver todos los servicios</a></li>
+                        </ul>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-white opacity-75 fw-bold" href="#contacto">Contacto</a>
@@ -49,8 +57,17 @@
                 <li class="nav-item mb-3">
                     <a class="nav-link fs-4 text-white opacity-75" href="#inicio">Inicio</a>
                 </li>
-                <li class="nav-item mb-3">
-                    <a class="nav-link fs-4 text-white opacity-75" href="#servicios">Servicios</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-white opacity-75 fw-bold" href="#" id="serviciosDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Servicios
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark custom-dropdown mt-2" aria-labelledby="serviciosDropdown">
+                        <li><a class="dropdown-item" href="mantenimiento.html">Mantenimiento Preventivo</a></li>
+                        <li><a class="dropdown-item" href="instalacion.html">Instalación de Programas</a></li>
+                        <li><a class="dropdown-item" href="reparacion.html">Reparación de Hardware</a></li>
+                        <li><hr class="dropdown-divider border-secondary"></li>
+                        <li><a class="dropdown-item" href="index.html#servicios">Ver todos los servicios</a></li>
+                    </ul>
                 </li>
                 <li class="nav-item mb-3">
                     <a class="nav-link fs-4 text-white opacity-75" href="#contacto">Contacto</a>
@@ -146,7 +163,7 @@
                                 </div>
                                 <p class="card-text text-muted fst-italic">"Mi laptop no encendía y la repararon en 24 horas. El trato fue excelente y el precio justo. ¡Totalmente recomendados!"</p>
                                 <div class="d-flex align-items-center mt-4">
-                                    <img src="https://via.placeholder.com/50" class="rounded-circle me-3" alt="Cliente">
+                                    <img src="://via.phttpslaceholder.com/50" class="rounded-circle me-3" alt="Cliente">
                                     <div>
                                         <h6 class="mb-0 fw-bold">Carlos Rodríguez</h6>
                                         <small class="text-muted">Nuevo Chimbote</small>
@@ -256,14 +273,6 @@
         </div>
     </section>
 
-    <div class="floating-socials">
-        <a href="..." class="social-bubble fb-bubble">
-            <i class="bi bi-facebook"></i>
-        </a>
-        <a href="..." class="social-bubble wa-bubble">
-            <i class="bi bi-whatsapp"></i>
-        </a>
-    </div>
 <!--legal-->
 <footer class="bg-dark text-white pt-5 pb-3">
     <div class="container">
@@ -311,11 +320,20 @@
     </div>
 </footer>
 <!--Botones de redes sociales-->
+<!--Burbujas sociales-->
     <div class="floating-socials">
-        <a href="https://facebook.com" target="_blank" class="social-bubble fb-bubble">
+        <a href="..." class="social-bubble fb-bubble">
             <i class="bi bi-facebook"></i>
         </a>
-        <a href="https://wa.me/51987654321?text=Hola,%20necesito%20información%20sobre%20un%20servicio%20técnico." target="_blank" class="social-bubble wa-bubble">
+        <a href="..." class="social-bubble wa-bubble">
+            <i class="bi bi-whatsapp"></i>
+        </a>
+    </div>
+    <div class="floating-socials">
+        <a href="https://www.facebook.com/groups/1780796192574358" target="_blank" class="social-bubble fb-bubble">
+            <i class="bi bi-facebook"></i>
+        </a>
+        <a href="https://wa.me/51959141623?text=Hola,%20necesito%20información%20sobre%20un%20servicio%20técnico." target="_blank" class="social-bubble wa-bubble">
             <i class="bi bi-whatsapp"></i>
         </a>
     </div>
