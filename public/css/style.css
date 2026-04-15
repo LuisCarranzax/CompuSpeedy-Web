@@ -81,11 +81,7 @@ html {
     transition: all 0.3s ease;
 }
 
-.custom-dropdown .dropdown-item:hover {
-    background-color: rgba(13, 110, 253, 0.25) !important; /* Azul sutil */
-    color: #fff !important; 
-    transform: translateX(8px); /* Deslizamiento derecho */
-}
+
 
 /* El pequeño separador entre opciones */
 .dropdown-divider.border-secondary {
@@ -105,6 +101,12 @@ html {
         color: #0d6efd !important;
         transform: translateY(-2px);
     }
+
+    .custom-dropdown .dropdown-item:hover {
+    background-color: transparent !important; /* Quitamos el recuadro azul */
+    color: #0d6efd !important; /* Letras azules igual que el menú principal */
+    transform: translateX(8px); /* Deslizamiento derecho */
+}
 }
 /* ========================================== */
 /* 3. NAVEGACIÓN: MENÚ LATERAL (OFFCANVAS)    */
@@ -170,7 +172,7 @@ html {
     background-repeat: no-repeat;
     
     /* AQUÍ APLICAMOS EL DESENFOQUE 15 */
-    filter: blur(10px) brightness(0.4) saturate(1.2); 
+    filter: blur(1px) brightness(0.4) saturate(1.2); 
     z-index: 1; 
 }
 
@@ -271,4 +273,85 @@ html {
 
 .fb-bubble {
     background-color: #1877F2; 
+}
+
+/* Portada para Formateo de PC y Laptops */
+.hero-formateo::before {
+    /* Una imagen de una laptop moderna o código cargando */
+    background-image: url('https://images.unsplash.com/photo-1593640408182-31c70c8268f5?q=80&w=1600&auto=format&fit=crop'); 
+}
+
+/* --- ESTILOS DE IMÁGENES EN TARJETAS DE SERVICIO --- */
+
+.card-img-container {
+    position: relative;
+    height: 180px;
+    overflow: hidden; /* Crucial para que el zoom no se salga de la tarjeta */
+}
+
+.card-img-top {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1), filter 0.3s ease;
+}
+
+/* El efecto de resaltar al pasar el mouse */
+.card:hover .card-img-top {
+    transform: scale(1.12); /* Un zoom ligero pero notable */
+    filter: brightness(0.85); /* Se oscurece un poco para que el badge resalte */
+}
+
+/* Pequeña etiqueta de paso sobre la imagen */
+.step-badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background-color: rgba(13, 110, 253, 0.85);
+    color: white;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    backdrop-filter: blur(5px);
+    z-index: 2;
+}
+/* --- TRANSICIÓN PARA LA TARJETA COMPLETA --- */
+/* Preparamos la tarjeta para que se mueva suavemente */
+.card {
+    transition: transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.3s ease !important;
+    will-change: transform, box-shadow; /* Optimización para que no se trabe en celulares */
+    
+    /* Fix para prevenir bugs de border-radius en Webkit/Safari al hacer zoom */
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}
+
+/* El efecto al pasar el mouse sobre toda la tarjeta */
+.card:hover {
+    transform: translateY(-12px) scale(1.02); /* Se eleva 12px hacia arriba y crece un 2% */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12) !important; /* La sombra se hace más grande, dando ilusión de flotar */
+}
+
+/* --- SOLUCIÓN: EVITAR CORTES DE ZOOM EN BORDES DEL SWIPER --- */
+/* Balanceamos un poco de espacio invisible para las tarjetas de los extremos */
+.swiper {
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    
+    margin-top: -20px;
+    margin-left: -20px;
+    margin-right: -20px;
+}
+
+/* --- ESTILOS PARA LA SECCIÓN DE SOFTWARE --- */
+
+/* --- ANIMACIÓN LINEAL PARA EL CARRUSEL DE PROGRAMAS (TICKER) --- */
+/* Esto evita que el carrusel se frene entre cada movimiento */
+.programasSwiper .swiper-wrapper {
+    transition-timing-function: linear !important;
 }

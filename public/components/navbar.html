@@ -1,0 +1,75 @@
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top py-3">
+    <div class="container">
+        <a class="navbar-brand text-white fw-bold fs-3" href="{{base}}/index.html">Compu Speedy</a>
+        
+        <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuPrincipal" aria-controls="menuPrincipal">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Menú de enlaces para vista Computadora (Escritorio) -->
+        <div class="collapse navbar-collapse" id="navbarDesktop">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link text-white opacity-75 fw-bold" href="{{base}}/index.html#inicio">Inicio</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-white opacity-75 fw-bold" href="#" id="serviciosDesktopDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Servicios
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark custom-dropdown mt-2" aria-labelledby="serviciosDesktopDropdown">
+                        <li><a class="dropdown-item" href="{{base}}/pages/mantenimiento.html">Mantenimiento Preventivo y Correctivo</a></li>
+                        <li><a class="dropdown-item" href="{{base}}/pages/formateo.html">Formateo</a></li>
+                        <li><a class="dropdown-item" href="{{base}}/pages/instalacionProgramas.html">Instalación de Programas</a></li>
+                        <li><a class="dropdown-item" href="{{base}}/pages/reparacion.html">Reparación de Hardware</a></li>
+                        <li><hr class="dropdown-divider border-secondary"></li>
+                        <li><a class="dropdown-item" href="{{base}}/index.html#servicios">Ver todos los servicios</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white opacity-75 fw-bold" href="{{base}}/index.html#contacto">Contacto</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Offcanvas para vista Celular (Móvil) - Separado para no chocar estilos -->
+<div class="offcanvas offcanvas-end bg-dark text-white d-lg-none" tabindex="-1" id="menuPrincipal" aria-labelledby="menuPrincipalLabel">
+    
+    <div class="offcanvas-header border-bottom border-secondary py-4">
+        <h5 class="offcanvas-title fw-bold fs-4" id="menuPrincipalLabel">Menú Principal</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    
+    <div class="offcanvas-body px-4 pt-4">
+        
+        <ul class="navbar-nav mb-4">
+            <li class="nav-item mb-3">
+                <a class="nav-link fs-4 text-white opacity-75" href="{{base}}/index.html#inicio">Inicio</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle text-white opacity-75 fw-bold" href="#" id="serviciosDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Servicios
+                </a>
+                <ul class="dropdown-menu dropdown-menu-dark custom-dropdown mt-2" aria-labelledby="serviciosDropdown">
+                    <li><a class="dropdown-item" href="{{base}}/pages/mantenimiento.html">Mantenimiento Preventivo y Correctivo</a></li>
+                    <li><a class="dropdown-item" href="{{base}}/pages/formateo.html">Formateo</a></li>
+                    <li><a class="dropdown-item" href="{{base}}/pages/instalacionProgramas.html">Instalación de Programas</a></li>
+                    <li><a class="dropdown-item" href="{{base}}/pages/reparacion.html">Reparación de Hardware</a></li>
+                    <li><hr class="dropdown-divider border-secondary"></li>
+                    <li><a class="dropdown-item" href="{{base}}/index.html#servicios">Ver todos los servicios</a></li>
+                </ul>
+            </li>
+            <li class="nav-item mb-3">
+                <a class="nav-link fs-4 text-white opacity-75" href="{{base}}/index.html#contacto">Contacto</a>
+            </li>
+        </ul>
+        
+        <div class="mt-5">
+            <a href="https://wa.me/51987654321" target="_blank" class="btn btn-success btn-lg w-100 rounded-pill shadow-sm py-3 fw-bold">
+                <i class="bi bi-whatsapp me-2"></i> Chat Directo
+            </a>
+        </div>
+
+    </div>
+</div>

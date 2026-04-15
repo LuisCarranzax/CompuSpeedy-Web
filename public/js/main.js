@@ -1,73 +1,85 @@
-// --- AUTO-CERRAR MENÚ LATERAL EN MÓVILES ---
-const enlacesMenu = document.querySelectorAll('.offcanvas-body .nav-link:not(.dropdown-toggle), .offcanvas-body .dropdown-item');
-const menuLateral = document.getElementById('menuPrincipal');
-
-if (menuLateral) {
-    enlacesMenu.forEach(enlace => {
-        enlace.addEventListener('click', () => {
-            if (window.innerWidth < 992) {
-
-                const bsOffcanvas = bootstrap.Offcanvas.getInstance(menuLateral);
-
-                if (bsOffcanvas) {
-                    bsOffcanvas.hide();
-                }
-            }
-        });
+// =========================================================
+// 1. CONFIGURACIÓN DEL CARRUSEL DE SERVICIOS (Inicio)
+// =========================================================
+if (document.querySelector('.mySwiper')) {
+    const swiper = new Swiper(".mySwiper", {
+        slidesPerView: 1,
+        spaceBetween: 20,
+        loop: true,
+        autoplay:{
+            delay: 3000,
+            disableOnInteraction: false,
+        },
+        pagination:{
+            // Pequeña mejora: le decimos que busque la paginación SOLO dentro de mySwiper
+            el: ".mySwiper .swiper-pagination", 
+            clickable: true,
+        },
+        breakpoints:{
+            768:{
+                slidesPerView: 2,
+                spaceBetween: 30,
+            },
+            1024:{
+                slidesPerView: 3,
+                spaceBetween: 30,
+            },
+        },
     });
 }
 
-//Carrusel servicios
-const swiper = new Swiper(".mySwiper", {
-    slidesPerView: 1,
-    spaceBetween: 20,
-    loop: true,
-    autoplay:{
-        delay: 3000,
-        disableOnInteraction: false,
-    },
-    pagination:{
-        el: ".swiper-pagination",
-        clickable: true,
-    },
+// =========================================================
+// 2. CONFIGURACIÓN DEL CARRUSEL DE TESTIMONIOS (Inicio)
+// =========================================================
+if (document.querySelector('.testimoniosSwiper')) {
+    const testimoniosSwiper = new Swiper(".testimoniosSwiper", {
+        slidesPerView: 1, 
+        spaceBetween: 20, 
+        loop: true,       
+        autoplay: {
+            delay: 4000,  
+            disableOnInteraction: false,
+        },
+        pagination: {
+            el: ".testimoniosSwiper .swiper-pagination", 
+            clickable: true,
+        },
+        breakpoints: {
+            768: {
+                slidesPerView: 2, 
+                spaceBetween: 30,
+            },
+            1024: {
+                slidesPerView: 3, 
+                spaceBetween: 30,
+            },
+        },
+    });
+}
 
-    breakpoints:{
-        768:{
-            slidesPerView: 2,
-            spaceBetween: 30,
+// =========================================================
+// 3. CONFIGURACIÓN DEL CARRUSEL DE PROGRAMAS (Ticker en Instalación)
+// =========================================================
+if (document.querySelector('.programasSwiper')) {
+    const programasSwiper = new Swiper(".programasSwiper", {
+        loop: true,                 // Vuelve a empezar infinitamente
+        speed: 3000,                // La velocidad constante a la que se mueve
+        allowTouchMove: false,      // Evita que el usuario lo arrastre y rompa la ilusión lineal
+        autoplay: {
+            delay: 0,                 // Cero delay = no se detiene nunca
+            disableOnInteraction: false,
         },
-        1024:{
-            slidesPerView: 3,
-            spaceBetween: 30,
-        },
-    },
-});
+        slidesPerView: 2,
+        spaceBetween: 20,
+        breakpoints: {
+            576: { slidesPerView: 3 },
+            768: { slidesPerView: 4 },
+            992: { slidesPerView: 5 },
+            1200: { slidesPerView: 6 }
+        }
+    });
+}
 
-// --- CONFIGURACIÓN DEL CARRUSEL DE TESTIMONIOS ---
-const testimoniosSwiper = new Swiper(".testimoniosSwiper", {
-    slidesPerView: 1, 
-    spaceBetween: 20, 
-    loop: true,       
-    autoplay: {
-        delay: 4000,  
-        disableOnInteraction: false,
-    },
-    pagination: {
-
-        el: ".testimoniosSwiper .swiper-pagination", 
-        clickable: true,
-    },
-    breakpoints: {
-        768: {
-            slidesPerView: 2, 
-            spaceBetween: 30,
-        },
-        1024: {
-            slidesPerView: 3, 
-            spaceBetween: 30,
-        },
-    },
-});
 
 //Correo Contacto
 document.addEventListener('DOMContentLoaded',() =>{
