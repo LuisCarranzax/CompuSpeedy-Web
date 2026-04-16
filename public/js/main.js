@@ -80,49 +80,71 @@ if (document.querySelector('.programasSwiper')) {
     });
 }
 
-
+// =========================================================
+// 4. CONFIGURACIÓN DEL CARRUSEL DE MARCAS (Impresoras)
+// =========================================================
+if (document.querySelector('.marcasSwiper')) {
+    const marcasSwiper = new Swiper(".marcasSwiper", {
+        loop: true,                 
+        speed: 2500,                // Un poquito más rápido que el de programas
+        allowTouchMove: false,      // Bloquea el toque para movimiento continuo lineal
+        autoplay: {
+            delay: 0,               
+            disableOnInteraction: false, 
+        },
+        slidesPerView: 3,           // En celular caben 3 marcas
+        spaceBetween: 30,           
+        breakpoints: {
+            768: { slidesPerView: 4 }, 
+            992: { slidesPerView: 5 }, 
+            1200: { slidesPerView: 6 } 
+        }
+    });
+}
 //Correo Contacto
 document.addEventListener('DOMContentLoaded',() =>{
     const formulario = document.getElementById('formContacto');
     const divRespuestas = document.getElementById('mensaje');
 
-    formulario.addEventListener('submit', async (e) =>{
-        
-        e.preventDefault();
+    if (formulario) {
+        formulario.addEventListener('submit', async (e) =>{
+            
+            e.preventDefault();
 
-        const datos ={
-            nombre: document.getElementById('nombre').value,
-            correo: document.getElementById('correo').value,
-            telefono: document.getElementById('telefono').value,
-            problema: document.getElementById('problema').value,
-        };
+            const datos ={
+                nombre: document.getElementById('nombre').value,
+                correo: document.getElementById('correo').value,
+                telefono: document.getElementById('telefono').value,
+                problema: document.getElementById('problema').value,
+            };
 
-        try{
-            const respuesta = await fetch('/api/contacto',{
-                method: 'POST',
-                headers:{
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(datos)
-            });
-            const resultado = await respuesta.json();
+            try{
+                const respuesta = await fetch('/api/contacto',{
+                    method: 'POST',
+                    headers:{
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(datos)
+                });
+                const resultado = await respuesta.json();
 
-            if(respuesta.ok){
+                if(respuesta.ok){
 
-                divRespuestas.innerHTML=`<div class="alert alert-success">${resultado.mensaje}</div>`
-                formulario.reset();
+                    divRespuestas.innerHTML=`<div class="alert alert-success">${resultado.mensaje}</div>`
+                    formulario.reset();
 
-            }else{
-                divRespuestas.innerHTML = `<div class="alert alert-danger">Hubo un error al enviar el mensaje.</div>`;
+                }else{
+                    divRespuestas.innerHTML = `<div class="alert alert-danger">Hubo un error al enviar el mensaje.</div>`;
+                }
+            }catch (error){
+                console.error('Error en la petición:', error);
+                divRespuestas.innerHTML = `<div class="alert alert-danger">Error de conexión con el servidor.</div>`;    
             }
-        }catch (error){
-            console.error('Error en la petición:', error);
-            divRespuestas.innerHTML = `<div class="alert alert-danger">Error de conexión con el servidor.</div>`;    
-        }
 
-        setTimeout(() =>{
-            divRespuestas.innerHTML = '';
-        },5000);
-    });
+            setTimeout(() =>{
+                divRespuestas.innerHTML = '';
+            },5000);
+        });
+    }
 });
 

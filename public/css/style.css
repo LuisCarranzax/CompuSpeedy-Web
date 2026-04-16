@@ -350,8 +350,81 @@ html {
 
 /* --- ESTILOS PARA LA SECCIÓN DE SOFTWARE --- */
 
-/* --- ANIMACIÓN LINEAL PARA EL CARRUSEL DE PROGRAMAS (TICKER) --- */
+/* --- ANIMACIÓN LINEAL PARA EL CARRUSEL DE PROGRAMAS Y MARCAS (TICKER) --- */
 /* Esto evita que el carrusel se frene entre cada movimiento */
-.programasSwiper .swiper-wrapper {
+.programasSwiper .swiper-wrapper,
+.marcasSwiper .swiper-wrapper {
     transition-timing-function: linear !important;
+}
+
+/* --- ESTILOS PARA LAS LISTAS DE MANTENIMIENTO --- */
+.custom-modern-list li {
+    display: flex; /* Alinea el icono y el texto perfectamente rectos */
+    align-items: flex-start; /* Evita que el icono se baje si el texto es muy largo */
+    margin-bottom: 18px;
+    font-size: 1.05rem;
+    color: #495057; /* Un gris oscuro, más elegante que el negro puro */
+    transition: transform 0.2s ease;
+}
+
+.custom-modern-list li i {
+    font-size: 1.3rem; /* Icono un poco más grande que el texto */
+    margin-right: 15px;
+    margin-top: 2px; /* Pequeño ajuste visual para centrarlo con la primera línea de texto */
+}
+
+/* Un micro-efecto: al pasar el mouse por un punto de la lista, se mueve un poquito a la derecha */
+.custom-modern-list li:hover {
+    transform: translateX(5px);
+    color: #000;
+}
+
+/* Efecto suave para las cajas de contenido */
+.hover-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.hover-lift:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1) !important;
+}
+
+/* --- FONDOS PARA LA PORTADA (Añadir a tu Sección 8) --- */
+.hero-mantenimiento::before {
+    background-image: url('https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?q=80&w=1600&auto=format&fit=crop'); 
+}
+/* Portada para Impresoras */
+.hero-impresoras::before {
+    /* Foto de una impresora moderna o un técnico arreglando una */
+    background-image: url('https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6?q=80&w=1600&auto=format&fit=crop'); 
+}
+
+/* Movimiento lineal (sin frenos) para las marcas */
+.marcasSwiper .swiper-wrapper {
+    transition-timing-function: linear !important;
+}
+/* --- ESTILOS PARA LOS LOGOS DE MARCAS (TICKER) --- */
+
+.marca-logo {
+    /* El secreto: limitar la ALTURA, dejando que el ancho se calcule solo */
+    height: 100px; 
+    width: auto;
+    object-fit: contain; /* Evita que la imagen se estire o deforme */
+    
+    /* El toque Premium: Logos grises y semitransparentes por defecto */
+    filter: grayscale(100%) opacity(60%);
+    transition: all 0.4s ease;
+    cursor: pointer;
+}
+
+/* Efecto al pasar el mouse: Recuperan su color y hacen un ligero zoom */
+.marca-logo:hover {
+    filter: grayscale(0%) opacity(100%);
+    transform: scale(1.15);
+}
+
+/* Ajuste responsivo para celulares (Logos un poco más pequeños) */
+@media (max-width: 767px) {
+    .marca-logo {
+        height: 30px; 
+    }
 }
