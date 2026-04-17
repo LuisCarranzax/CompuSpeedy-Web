@@ -6,21 +6,21 @@ if (document.querySelector('.mySwiper')) {
         slidesPerView: 1,
         spaceBetween: 20,
         loop: true,
-        autoplay:{
+        autoplay: {
             delay: 3000,
             disableOnInteraction: false,
         },
-        pagination:{
+        pagination: {
             // Pequeña mejora: le decimos que busque la paginación SOLO dentro de mySwiper
-            el: ".mySwiper .swiper-pagination", 
+            el: ".mySwiper .swiper-pagination",
             clickable: true,
         },
-        breakpoints:{
-            768:{
+        breakpoints: {
+            768: {
                 slidesPerView: 2,
                 spaceBetween: 30,
             },
-            1024:{
+            1024: {
                 slidesPerView: 3,
                 spaceBetween: 30,
             },
@@ -33,24 +33,24 @@ if (document.querySelector('.mySwiper')) {
 // =========================================================
 if (document.querySelector('.testimoniosSwiper')) {
     const testimoniosSwiper = new Swiper(".testimoniosSwiper", {
-        slidesPerView: 1, 
-        spaceBetween: 20, 
-        loop: true,       
+        slidesPerView: 1,
+        spaceBetween: 20,
+        loop: true,
         autoplay: {
-            delay: 4000,  
+            delay: 4000,
             disableOnInteraction: false,
         },
         pagination: {
-            el: ".testimoniosSwiper .swiper-pagination", 
+            el: ".testimoniosSwiper .swiper-pagination",
             clickable: true,
         },
         breakpoints: {
             768: {
-                slidesPerView: 2, 
+                slidesPerView: 2,
                 spaceBetween: 30,
             },
             1024: {
-                slidesPerView: 3, 
+                slidesPerView: 3,
                 spaceBetween: 30,
             },
         },
@@ -85,66 +85,87 @@ if (document.querySelector('.programasSwiper')) {
 // =========================================================
 if (document.querySelector('.marcasSwiper')) {
     const marcasSwiper = new Swiper(".marcasSwiper", {
-        loop: true,                 
+        loop: true,
         speed: 2500,                // Un poquito más rápido que el de programas
         allowTouchMove: false,      // Bloquea el toque para movimiento continuo lineal
         autoplay: {
-            delay: 0,               
-            disableOnInteraction: false, 
+            delay: 0,
+            disableOnInteraction: false,
         },
         slidesPerView: 3,           // En celular caben 3 marcas
-        spaceBetween: 30,           
+        spaceBetween: 30,
         breakpoints: {
-            768: { slidesPerView: 4 }, 
-            992: { slidesPerView: 5 }, 
-            1200: { slidesPerView: 6 } 
+            768: { slidesPerView: 4 },
+            992: { slidesPerView: 5 },
+            1200: { slidesPerView: 6 }
         }
     });
 }
-//Correo Contacto
-document.addEventListener('DOMContentLoaded',() =>{
-    const formulario = document.getElementById('formContacto');
+// =========================================================
+// ENVÍO DE FORMULARIO DE CONTACTO (Con validación de existencia)
+// =========================================================
+const formulario = document.getElementById('formContacto');
+
+// El IF es crucial: Solo ejecuta este código si el formulario existe en la página actual
+if (formulario) {
     const divRespuestas = document.getElementById('mensaje');
 
-    if (formulario) {
-        formulario.addEventListener('submit', async (e) =>{
-            
-            e.preventDefault();
+    formulario.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        if (!divRespuestas) return;
 
-            const datos ={
-                nombre: document.getElementById('nombre').value,
-                correo: document.getElementById('correo').value,
-                telefono: document.getElementById('telefono').value,
-                problema: document.getElementById('problema').value,
-            };
+        // Mostrar mensaje de "Enviando..."
+        divRespuestas.className = 'alert alert-info py-2 mb-4 mt-3 text-center fw-bold rounded-3 transition-all';
+        divRespuestas.innerHTML = '<i class="bi bi-hourglass-split me-2"></i>Enviando mensaje...';
 
-            try{
-                const respuesta = await fetch('/api/contacto',{
-                    method: 'POST',
-                    headers:{
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(datos)
-                });
-                const resultado = await respuesta.json();
+        const datos = {
+            nombre: document.getElementById('nombre').value,
+            correo: document.getElementById('correo').value,
+            telefono: document.getElementById('telefono').value,
+            problema: document.getElementById('problema').value,
+        };
 
-                if(respuesta.ok){
+        try {
+            const respuesta = await fetch('/api/contacto', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(datos)
+            });
 
-                    divRespuestas.innerHTML=`<div class="alert alert-success">${resultado.mensaje}</div>`
-                    formulario.reset();
-
-                }else{
-                    divRespuestas.innerHTML = `<div class="alert alert-danger">Hubo un error al enviar el mensaje.</div>`;
-                }
-            }catch (error){
-                console.error('Error en la petición:', error);
-                divRespuestas.innerHTML = `<div class="alert alert-danger">Error de conexión con el servidor.</div>`;    
+            // Tratamos de procesar JSON, pero en caso de que la respuesta no sea JSON lo controlamos
+            let resultado = {};
+            try {
+                resultado = await respuesta.json();
+            } catch (e) {
+                console.warn('La respuesta no fue JSON');
             }
 
-            setTimeout(() =>{
-                divRespuestas.innerHTML = '';
-            },5000);
-        });
-    }
-});
+            if (respuesta.ok) {
+                // Alerta de Éxito Verde
+                divRespuestas.className = 'alert alert-success py-2 mb-4 shadow-sm mt-3 text-center fw-bold rounded-3 transition-all';
+                // Añadimos el mensaje de confirmación explícito como pidió el usuario
+                const mensajeConfirmacion = '¡Mensaje enviado correctamente! Nos pondremos en contacto contigo pronto.';
+                divRespuestas.innerHTML = `<i class="bi bi-check-circle-fill me-2"></i>${mensajeConfirmacion}`;
+                formulario.reset();
+            } else {
+                // Alerta de Error Naranja
+                divRespuestas.className = 'alert alert-warning py-2 mb-4 mt-3 text-center fw-bold rounded-3 transition-all';
+                divRespuestas.innerHTML = `<i class="bi bi-exclamation-triangle-fill me-2"></i>Hubo un error al enviar el mensaje. Intenta de nuevo.`;
+            }
+        } catch (error) {
+            console.error('Error en la petición:', error);
+            // Alerta de Error Roja
+            divRespuestas.className = 'alert alert-danger py-2 mb-4 mt-3 text-center fw-bold rounded-3 transition-all';
+            divRespuestas.innerHTML = `<i class="bi bi-wifi-off me-2"></i>Error de conexión con el servidor.`;
+        }
 
+        // Borrar el mensaje después de 6 segundos
+        setTimeout(() => {
+            divRespuestas.className = '';
+            divRespuestas.innerHTML = '';
+        }, 6000);
+    });
+}

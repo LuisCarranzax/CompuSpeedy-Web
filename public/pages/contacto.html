@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Contacto | Compu Speedy</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../css/style.css"> <!-- Ojo: Usamos ../ porque estamos dentro de /pages/ -->
+</head>
+
+<body>
+
+    <!-- 1. Magia: Este Div jalará la barra de navegación entera -->
+    <div id="navbar-placeholder"></div>
+
+    <section class="py-5 bg-light min-vh-100 d-flex align-items-center">
+        <div class="container py-4">
+
+            <div class="text-center mb-5" data-aos="fade-down">
+                <h1 class="fw-bold display-5">¿Cómo podemos ayudarte?</h1>
+                <p class="text-muted fs-5">Visítanos en nuestro local o envíanos un mensaje detallado.</p>
+            </div>
+
+            <div class="row g-5 align-items-stretch">
+
+                <div class="col-lg-6" data-aos="fade-right">
+                    <div class="card border-0 shadow-sm rounded-4 overflow-hidden h-100 d-flex flex-column">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1191.2745220084435!2d-78.5136235!3d-9.1287528!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91ab850cd3e881e3%3A0x222f495512873c5b!2sSERVICIO%20T%C3%89CNICO%20DE%20COMPUTADORAS%20LAPTOS%20IMPRESORAS!5e1!3m2!1ses-419!2spe!4v1776387662539!5m2!1ses-419!2spe"
+                            width="100%" height="100%" style="border:0; min-height: 350px; flex-grow: 1;"
+                            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+                        <div class="bg-dark text-white p-4 text-center">
+                            <h5 class="fw-bold mb-2"><i class="bi bi-geo-alt-fill text-primary me-2"></i>Nuestra
+                                Ubicación</h5>
+                            <p class="text-white-50 small mb-4">Av. Principal 123, Distrito de Nuevo Chimbote, Ancash
+                            </p>
+                            <a href="https://maps.google.com/maps?daddr=Nuevo+Chimbote" target="_blank"
+                                class="btn btn-outline-light rounded-pill px-5 hover-lift">
+                                <i class="bi bi-cursor-fill me-2"></i>Cómo Llegar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6" data-aos="fade-left" data-aos-delay="100">
+                    <div class="card border-0 shadow-sm rounded-4 p-4 p-md-5 h-100">
+                        <h3 class="fw-bold mb-4">Envíanos un mensaje</h3>
+
+                        <div id="mensaje" class="text-center fw-bold rounded-3 transition-all"></div>
+
+                        <form id="formContacto">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control bg-light border-0" id="nombre"
+                                    placeholder="Tu Nombre" required>
+                                <label for="nombre" class="text-muted">Nombre completo</label>
+                            </div>
+                            <div class="row g-3 mb-3">
+                                <div class="col-md-6 form-floating">
+                                    <input type="email" class="form-control bg-light border-0" id="correo"
+                                        placeholder="correo@ejemplo.com" required>
+                                    <label for="correo" class="text-muted ms-2">Correo electrónico</label>
+                                </div>
+                                <div class="col-md-6 form-floating">
+                                    <input type="tel" class="form-control bg-light border-0" id="telefono"
+                                        placeholder="Tu Teléfono" required>
+                                    <label for="telefono" class="text-muted ms-2">Teléfono / WhatsApp</label>
+                                </div>
+                            </div>
+                            <div class="form-floating mb-4">
+                                <textarea class="form-control bg-light border-0" id="problema"
+                                    placeholder="Describe el problema" style="height: 150px" required></textarea>
+                                <label for="problema" class="text-muted">¿Qué problema presenta tu equipo?</label>
+                            </div>
+                            <button type="submit"
+                                class="btn btn-primary btn-lg w-100 rounded-pill shadow-sm hover-lift">
+                                <i class="bi bi-send-fill me-2"></i>Enviar Solicitud
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Magia: Este Div jalará el Footer entero automáticamente -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Scripts Esenciales -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <!-- 4. Llamamos a tu archivo de inyección (ajustamos ruta local con ../) -->
+    <script src="../js/components.js"></script>
+    <script>
+        // Le mandamos '..' porque la carpeta /pages/ está un nivel adentro!
+        loadComponents('..'); 
+    </script>
+    <script src="../js/main.js"></script>
+</body>
+
+</html>
