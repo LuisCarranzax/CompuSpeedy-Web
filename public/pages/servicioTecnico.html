@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="../css/style.css"> <!-- Ojo: Usamos ../ porque estamos dentro de /pages/ -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 
 <body>
@@ -28,14 +29,13 @@
                 Evita fallos costosos, lentitud y sobrecalentamiento. Realizamos un servicio técnico integral a nivel
                 físico (Hardware) y lógico (Software) para que tu equipo vuelva a funcionar como el primer día.
             </p>
-            <a href="index.html#contacto"
-                class="btn btn-info text-white btn-lg rounded-pill px-5 shadow transform-hover" data-aos="fade-up"
-                data-aos-delay="200">
+            <a href="contacto.html" class="btn btn-info text-white btn-lg rounded-pill px-5 shadow transform-hover"
+                data-aos="fade-up" data-aos-delay="200">
                 Agendar Mantenimiento
             </a>
         </div>
     </header>
-    <section class="py-4 bg-light border-bottom overflow-hidden">
+    <section class="py-4 bg-light border-bottom overflow-hidden" data-aos="fade-up">
         <div class="container text-center mb-3">
             <p class="text-muted fw-bold text-uppercase letter-spacing-2 small mb-0">Trabajamos con las mejores marcas
             </p>
@@ -45,45 +45,45 @@
             <div class="swiper-wrapper align-items-center">
 
                 <div class="swiper-slide text-center">
-                    <img src="../img/Dell_Logo.svg.png" alt="Dell" class="marca-logo">
+                    <img src="../img/Dell_Logo.svg.png" alt="Dell" class="marca-logo" loading="lazy">
                 </div>
                 <div class="swiper-slide text-center">
-                    <img src="../img/HP_logo_2012.svg.png" alt="HP" class="marca-logo">
+                    <img src="../img/HP_logo_2012.svg.png" alt="HP" class="marca-logo" loading="lazy">
                 </div>
                 <div class="swiper-slide text-center">
-                    <img src="../img/lenovo-logo-Nuevo_2.png" alt="Lenovo" class="marca-logo">
+                    <img src="../img/lenovo-logo-Nuevo_2.png" alt="Lenovo" class="marca-logo" loading="lazy">
                 </div>
                 <div class="swiper-slide text-center">
-                    <img src="../img/Asus-Logo.png" alt="ASUS" class="marca-logo">
+                    <img src="../img/Asus-Logo.png" alt="ASUS" class="marca-logo" loading="lazy">
                 </div>
                 <div class="swiper-slide text-center">
-                    <img src="../img/Acer-Logo.png" alt="Acer" class="marca-logo">
+                    <img src="../img/Acer-Logo.png" alt="Acer" class="marca-logo" loading="lazy">
                 </div>
                 <div class="swiper-slide text-center">
-                    <img src="../img/Toshiba-Logo.png" alt="Toshiba" class="marca-logo">
+                    <img src="../img/Toshiba-Logo.png" alt="Toshiba" class="marca-logo" loading="lazy">
                 </div>
                 <div class="swiper-slide text-center">
-                    <img src="../img/Dell_Logo.svg.png" alt="Dell" class="marca-logo">
+                    <img src="../img/Dell_Logo.svg.png" alt="Dell" class="marca-logo" loading="lazy">
                 </div>
                 <div class="swiper-slide text-center">
-                    <img src="../img/HP_logo_2012.svg.png" alt="HP" class="marca-logo">
+                    <img src="../img/HP_logo_2012.svg.png" alt="HP" class="marca-logo" loading="lazy">
                 </div>
                 <div class="swiper-slide text-center">
-                    <img src="../img/lenovo-logo-Nuevo_2.png" alt="Lenovo" class="marca-logo">
+                    <img src="../img/lenovo-logo-Nuevo_2.png" alt="Lenovo" class="marca-logo" loading="lazy">
                 </div>
                 <div class="swiper-slide text-center">
-                    <img src="../img/Asus-Logo.png" alt="ASUS" class="marca-logo">
+                    <img src="../img/Asus-Logo.png" alt="ASUS" class="marca-logo" loading="lazy">
                 </div>
                 <div class="swiper-slide text-center">
-                    <img src="../img/Acer-Logo.png" alt="Acer" class="marca-logo">
+                    <img src="../img/Acer-Logo.png" alt="Acer" class="marca-logo" loading="lazy">
                 </div>
                 <div class="swiper-slide text-center">
-                    <img src="../img/Toshiba-Logo.png" alt="Toshiba" class="marca-logo">
+                    <img src="../img/Toshiba-Logo.png" alt="Toshiba" class="marca-logo" loading="lazy">
                 </div>
             </div>
         </div>
     </section>
-    <section class="py-5 bg-white overflow-hidden">
+    <section class="py-5 bg-white overflow-hidden" data-aos="fade-up">
         <div class="container py-4">
 
             <div class="row align-items-center mb-5 pb-5 border-bottom">
@@ -138,7 +138,8 @@
                         <ul class="list-unstyled custom-modern-list">
                             <li><i class="bi bi-check-circle-fill text-success"></i>
                                 <span><strong>Desfragmentación</strong> del disco duro para agilizar la lectura de
-                                    datos.</span></li>
+                                    datos.</span>
+                            </li>
                             <li><i class="bi bi-check-circle-fill text-success"></i> <span>Eliminación de
                                     <strong>archivos temporales</strong> que merman la rapidez de tu PC.</span></li>
                             <li><i class="bi bi-check-circle-fill text-success"></i> <span>Limpieza profunda de la
@@ -173,6 +174,11 @@
         // Le mandamos '..' porque la carpeta /pages/ está un nivel adentro!
         loadComponents('..'); 
     </script>
+
+
+    <!-- AOS Library -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="../js/aos-init.js"></script>
 </body>
 
 </html>

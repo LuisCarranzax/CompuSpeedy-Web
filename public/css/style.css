@@ -1,9 +1,8 @@
 /* ========================================== */
-/* 1. ESTILOS GLOBALES Y UTILIDADES           */
+/* 1. GLOBALES Y UTILIDADES                   */
 /* ========================================== */
 html {
     scroll-behavior: smooth;
-    /* ¡NUEVO! Evita que el menú fijo tape los títulos de las secciones */
     scroll-padding-top: 100px;
 }
 
@@ -15,69 +14,56 @@ html {
     opacity: 0.9;
 }
 
+.hover-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1) !important;
+}
+
 /* ========================================== */
-/* 2. NAVEGACIÓN: BARRA PRINCIPAL             */
+/* 2. NAVEGACIÓN PRINCIPAL (NAVBAR)           */
 /* ========================================== */
 .navbar {
-    /* Mantenemos la estructura transparente en el contenedor principal */
     background-color: transparent !important;
-
-    /* Pequeñísima línea brillante en la parte inferior para definir el límite del cristal */
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-
     transition: all 0.3s ease;
 }
 
-/* Aislamos el difuminado en una capa trasera (::before) para evitar romper el difuminado del Dropdown */
 .navbar::before {
     content: '';
     position: absolute;
     inset: 0;
-
-    /* Fondo oscuro pero con mucha transparencia (60% opaco) */
     background-color: rgba(15, 15, 20, 0.6);
-
-    /* Desenfoque fuerte y saturación para resaltar los colores que pasan por detrás */
     backdrop-filter: blur(15px) saturate(150%);
     -webkit-backdrop-filter: blur(15px) saturate(150%);
-
     z-index: -1;
 }
 
 .navbar-brand {
     font-size: 1.6rem;
     font-weight: 800;
-    /* Letra muy gruesa para el logo/nombre */
     letter-spacing: 1px;
     text-transform: uppercase;
-    /* Todo en mayúsculas para más impacto */
 }
 
-/* --- ESTILOS DEL MENÚ DESPLEGABLE (DROPDOWN CRISTAL ANTIBUGS) --- */
 .custom-dropdown {
-    /* 1. Transparencia */
     background-color: rgba(15, 15, 20, 0.6) !important;
-
-    /* 2. Forzar el difuminado en PC */
     backdrop-filter: blur(20px) saturate(150%) !important;
     -webkit-backdrop-filter: blur(20px) saturate(150%) !important;
-
-    /* 3. El truco de magia para evitar que Popper.js rompa el efecto */
     background-clip: padding-box !important;
     transform: translateZ(0);
     will-change: filter, transform;
-
-    /* 4. Estética de la caja */
     border: 1px solid rgba(255, 255, 255, 0.1) !important;
     border-radius: 12px !important;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6) !important;
     padding: 10px 0 !important;
     margin-top: 15px !important;
-    /* Lo separa un poquito más de la barra principal */
 }
 
-/* Efecto al pasar el mouse por las opciones del desplegable */
 .custom-dropdown .dropdown-item {
     padding: 12px 20px;
     font-weight: 500;
@@ -85,14 +71,10 @@ html {
     transition: all 0.3s ease;
 }
 
-
-
-/* El pequeño separador entre opciones */
 .dropdown-divider.border-secondary {
     border-color: rgba(255, 255, 255, 0.1) !important;
 }
 
-/* Enlaces de la barra (Solo visibles y estilizados en PC) */
 @media (min-width: 992px) {
     .navbar-nav .nav-link {
         font-size: 1.1rem;
@@ -109,35 +91,27 @@ html {
 
     .custom-dropdown .dropdown-item:hover {
         background-color: transparent !important;
-        /* Quitamos el recuadro azul */
         color: #0d6efd !important;
-        /* Letras azules igual que el menú principal */
         transform: translateX(8px);
-        /* Deslizamiento derecho */
     }
 }
 
 /* ========================================== */
-/* 3. NAVEGACIÓN: MENÚ LATERAL (OFFCANVAS)    */
+/* 3. MENÚ LATERAL (OFFCANVAS)                */
 /* ========================================== */
 .offcanvas-end {
-    /* Fondo transparente y efecto cristal */
     background-color: rgba(15, 15, 20, 0.4) !important;
     backdrop-filter: blur(20px) saturate(150%);
     -webkit-backdrop-filter: blur(20px) saturate(150%);
     border-left: 1px solid rgba(255, 255, 255, 0.1);
-
-    /* Tamaños adaptables */
     width: 60vw !important;
     max-width: 350px;
 }
 
-/* Sombra trasera más suave */
 .offcanvas-backdrop.show {
     opacity: 0.3 !important;
 }
 
-/* Estilo de los enlaces en el panel lateral */
 .offcanvas-body .nav-link {
     font-size: 1.3rem;
     padding: 18px 0;
@@ -155,7 +129,7 @@ html {
 }
 
 /* ========================================== */
-/* 4. SECCIÓN HERO (PORTADA PRINCIPAL)        */
+/* 4. HERO Y PORTADAS                         */
 /* ========================================== */
 .hero-modern {
     position: relative;
@@ -165,58 +139,165 @@ html {
     background-color: #000;
 }
 
-/* El pseudoelemento que contiene la imagen y el difuminado */
-/* El pseudoelemento que contiene la imagen y el difuminado */
 .hero-modern::before {
     content: '';
     position: absolute;
     top: -20px;
-    /* Aumentamos el margen negativo para que no queden bordes blancos por el blur fuerte */
     left: -20px;
     right: -20px;
     bottom: -20px;
-    /* Usamos un link directo a un JPG en lugar de la URL de la página web de Unsplash */
     background-image: url('https://images.unsplash.com/photo-1604754742629-3e5728249d73?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-
-    /* AQUÍ APLICAMOS EL DESENFOQUE 15 */
     filter: blur(1px) brightness(0.4) saturate(1.2);
     z-index: 1;
 }
 
-/* ========================================== */
-/* IMPORTANTE: Capa del texto encima de la imagen */
-/* ========================================== */
 .hero-content {
     position: relative;
     z-index: 2;
 }
 
-/* Ajuste responsivo de los botones de la portada */
 .hero-content .btn {
     transition: all 0.3s ease;
 }
 
-/* Solo se aplica en celulares (pantallas menores a 768px) */
 @media (max-width: 767px) {
     .hero-content .btn {
-        /* Equivale a una escala más pequeña y cómoda para los pulgares */
         font-size: 0.95rem;
         padding: 12px 25px !important;
         width: 100%;
-        /* Hace que los botones ocupen el ancho disponible */
+    }
+}
+
+.hero-formateo::before {
+    background-image: url('https://images.unsplash.com/photo-1593640408182-31c70c8268f5?q=80&w=1600&auto=format&fit=crop');
+}
+
+.hero-mantenimiento::before {
+    background-image: url('https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?q=80&w=1600&auto=format&fit=crop');
+}
+
+.hero-impresoras::before {
+    background-image: url('https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6?q=80&w=1600&auto=format&fit=crop');
+}
+
+/* ========================================== */
+/* 5. TARJETAS Y SERVICIOS                    */
+/* ========================================== */
+.card-img-container {
+    position: relative;
+    height: 300px;
+    overflow: hidden;
+}
+
+.card-img-top {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1), filter 0.3s ease;
+}
+
+.card:hover .card-img-top {
+    transform: scale(1.12);
+    filter: brightness(0.85);
+}
+
+.step-badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background-color: rgba(13, 110, 253, 0.85);
+    color: white;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    backdrop-filter: blur(5px);
+    z-index: 2;
+}
+
+.card {
+    transition: transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.3s ease !important;
+    will-change: transform, box-shadow;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}
+
+.card:hover {
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12) !important;
+}
+
+.swiper {
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: -20px;
+    margin-left: -20px;
+    margin-right: -20px;
+}
+
+.programasSwiper .swiper-wrapper,
+.marcasSwiper .swiper-wrapper {
+    transition-timing-function: linear !important;
+}
+
+/* ========================================== */
+/* 6. LOGOS DE MARCAS                         */
+/* ========================================== */
+.marca-logo {
+    height: 100px;
+    width: auto;
+    object-fit: contain;
+    filter: grayscale(100%) opacity(60%);
+    transition: all 0.4s ease;
+    cursor: pointer;
+}
+
+.marca-logo:hover {
+    filter: grayscale(0%) opacity(100%);
+    transform: scale(1.15);
+}
+
+@media (max-width: 767px) {
+    .marca-logo {
+        height: 30px;
     }
 }
 
 /* ========================================== */
-/* 5. FORMULARIOS Y CONTACTO                  */
+/* 7. LISTAS Y CONTENIDO TEXTUAL              */
+/* ========================================== */
+.custom-modern-list li {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 18px;
+    font-size: 1.05rem;
+    color: #495057;
+    transition: transform 0.2s ease;
+}
+
+.custom-modern-list li i {
+    font-size: 1.3rem;
+    margin-right: 15px;
+    margin-top: 2px;
+}
+
+.custom-modern-list li:hover {
+    transform: translateX(5px);
+    color: #000;
+}
+
+/* ========================================== */
+/* 8. FORMULARIOS Y CONTACTO                  */
 /* ========================================== */
 .form-control:focus {
     background-color: #fff !important;
     box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.1);
-    /* Error de tipeo corregido aquí */
     border: 1px solid #0d6efd !important;
 }
 
@@ -225,7 +306,7 @@ html {
 }
 
 /* ========================================== */
-/* 6. FOOTER (PIE DE PÁGINA)                  */
+/* 9. FOOTER Y REDES SOCIALES                 */
 /* ========================================== */
 .footer-links li {
     margin-bottom: 10px;
@@ -246,9 +327,6 @@ html {
     color: rgba(255, 255, 255, 0.7);
 }
 
-/* ========================================== */
-/* 7. ELEMENTOS FLOTANTES (REDES SOCIALES)    */
-/* ========================================== */
 .floating-socials {
     position: fixed;
     bottom: 30px;
@@ -285,174 +363,4 @@ html {
 
 .fb-bubble {
     background-color: #1877F2;
-}
-
-/* Portada para Formateo de PC y Laptops */
-.hero-formateo::before {
-    /* Una imagen de una laptop moderna o código cargando */
-    background-image: url('https://images.unsplash.com/photo-1593640408182-31c70c8268f5?q=80&w=1600&auto=format&fit=crop');
-}
-
-/* --- ESTILOS DE IMÁGENES EN TARJETAS DE SERVICIO --- */
-
-.card-img-container {
-    position: relative;
-    height: 300px;
-    overflow: hidden;
-    /* Crucial para que el zoom no se salga de la tarjeta */
-}
-
-.card-img-top {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1), filter 0.3s ease;
-}
-
-/* El efecto de resaltar al pasar el mouse */
-.card:hover .card-img-top {
-    transform: scale(1.12);
-    /* Un zoom ligero pero notable */
-    filter: brightness(0.85);
-    /* Se oscurece un poco para que el badge resalte */
-}
-
-/* Pequeña etiqueta de paso sobre la imagen */
-.step-badge {
-    position: absolute;
-    top: 15px;
-    left: 15px;
-    background-color: rgba(13, 110, 253, 0.85);
-    color: white;
-    padding: 5px 12px;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: bold;
-    backdrop-filter: blur(5px);
-    z-index: 2;
-}
-
-/* --- TRANSICIÓN PARA LA TARJETA COMPLETA --- */
-/* Preparamos la tarjeta para que se mueva suavemente */
-.card {
-    transition: transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.3s ease !important;
-    will-change: transform, box-shadow;
-    /* Optimización para que no se trabe en celulares */
-
-    /* Fix para prevenir bugs de border-radius en Webkit/Safari al hacer zoom */
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-}
-
-/* El efecto al pasar el mouse sobre toda la tarjeta */
-.card:hover {
-    transform: translateY(-12px) scale(1.02);
-    /* Se eleva 12px hacia arriba y crece un 2% */
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12) !important;
-    /* La sombra se hace más grande, dando ilusión de flotar */
-}
-
-/* --- SOLUCIÓN: EVITAR CORTES DE ZOOM EN BORDES DEL SWIPER --- */
-/* Balanceamos un poco de espacio invisible para las tarjetas de los extremos */
-.swiper {
-    padding-top: 20px;
-    padding-left: 20px;
-    padding-right: 20px;
-
-    margin-top: -20px;
-    margin-left: -20px;
-    margin-right: -20px;
-}
-
-/* --- ESTILOS PARA LA SECCIÓN DE SOFTWARE --- */
-
-/* --- ANIMACIÓN LINEAL PARA EL CARRUSEL DE PROGRAMAS Y MARCAS (TICKER) --- */
-/* Esto evita que el carrusel se frene entre cada movimiento */
-.programasSwiper .swiper-wrapper,
-.marcasSwiper .swiper-wrapper {
-    transition-timing-function: linear !important;
-}
-
-/* --- ESTILOS PARA LAS LISTAS DE MANTENIMIENTO --- */
-.custom-modern-list li {
-    display: flex;
-    /* Alinea el icono y el texto perfectamente rectos */
-    align-items: flex-start;
-    /* Evita que el icono se baje si el texto es muy largo */
-    margin-bottom: 18px;
-    font-size: 1.05rem;
-    color: #495057;
-    /* Un gris oscuro, más elegante que el negro puro */
-    transition: transform 0.2s ease;
-}
-
-.custom-modern-list li i {
-    font-size: 1.3rem;
-    /* Icono un poco más grande que el texto */
-    margin-right: 15px;
-    margin-top: 2px;
-    /* Pequeño ajuste visual para centrarlo con la primera línea de texto */
-}
-
-/* Un micro-efecto: al pasar el mouse por un punto de la lista, se mueve un poquito a la derecha */
-.custom-modern-list li:hover {
-    transform: translateX(5px);
-    color: #000;
-}
-
-/* Efecto suave para las cajas de contenido */
-.hover-lift {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.hover-lift:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1) !important;
-}
-
-/* --- FONDOS PARA LA PORTADA (Añadir a tu Sección 8) --- */
-.hero-mantenimiento::before {
-    background-image: url('https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?q=80&w=1600&auto=format&fit=crop');
-}
-
-/* Portada para Impresoras */
-.hero-impresoras::before {
-    /* Foto de una impresora moderna o un técnico arreglando una */
-    background-image: url('https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6?q=80&w=1600&auto=format&fit=crop');
-}
-
-/* Movimiento lineal (sin frenos) para las marcas */
-.marcasSwiper .swiper-wrapper {
-    transition-timing-function: linear !important;
-}
-
-/* --- ESTILOS PARA LOS LOGOS DE MARCAS (TICKER) --- */
-
-.marca-logo {
-    /* El secreto: limitar la ALTURA, dejando que el ancho se calcule solo */
-    height: 100px;
-    width: auto;
-    object-fit: contain;
-    /* Evita que la imagen se estire o deforme */
-
-    /* El toque Premium: Logos grises y semitransparentes por defecto */
-    filter: grayscale(100%) opacity(60%);
-    transition: all 0.4s ease;
-    cursor: pointer;
-}
-
-/* Efecto al pasar el mouse: Recuperan su color y hacen un ligero zoom */
-.marca-logo:hover {
-    filter: grayscale(0%) opacity(100%);
-    transform: scale(1.15);
-}
-
-/* Ajuste responsivo para celulares (Logos un poco más pequeños) */
-@media (max-width: 767px) {
-    .marca-logo {
-        height: 30px;
-    }
 }

@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="../css/style.css"> <!-- Ojo: Usamos ../ porque estamos dentro de /pages/ -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 
 <body>
@@ -29,13 +30,13 @@
                 ¿Imprime con rayas, atasca el papel o parpadean las luces rojas? Recuperamos la calidad de tus
                 impresiones en equipos de inyección de tinta y sistemas láser.
             </p>
-            <a href="index.html#contacto" class="btn btn-primary btn-lg rounded-pill px-5 shadow transform-hover"
+            <a href="contacto.html" class="btn btn-primary btn-lg rounded-pill px-5 shadow transform-hover"
                 data-aos="fade-up" data-aos-delay="200">
                 Reparar mi Impresora
             </a>
         </div>
     </header>
-    <section class="py-4 bg-light border-bottom overflow-hidden">
+    <section class="py-4 bg-light border-bottom overflow-hidden" data-aos="fade-up">
         <div class="container text-center mb-3">
             <p class="text-muted fw-bold text-uppercase letter-spacing-2 small mb-0">Trabajamos con las mejores marcas
             </p>
@@ -45,34 +46,34 @@
             <div class="swiper-wrapper align-items-center">
 
                 <div class="swiper-slide text-center">
-                    <img src="../img/epson-svgrepo-com.png" alt="Epson" class="marca-logo">
+                    <img src="../img/epson-svgrepo-com.png" alt="Epson" class="marca-logo" loading="lazy">
                 </div>
                 <div class="swiper-slide text-center">
-                    <img src="../img/HP_logo_2012.svg.png" alt="HP" class="marca-logo">
+                    <img src="../img/HP_logo_2012.svg.png" alt="HP" class="marca-logo" loading="lazy">
                 </div>
                 <div class="swiper-slide text-center">
-                    <img src="../img/logo-Brother.png" alt="Brother" class="marca-logo">
+                    <img src="../img/logo-Brother.png" alt="Brother" class="marca-logo" loading="lazy">
                 </div>
                 <div class="swiper-slide text-center">
-                    <img src="../img/Canon.webp" alt="Canon" class="marca-logo">
+                    <img src="../img/Canon.webp" alt="Canon" class="marca-logo" loading="lazy">
                 </div>
                 <div class="swiper-slide text-center">
-                    <img src="../img/epson-svgrepo-com.png" alt="Epson" class="marca-logo">
+                    <img src="../img/epson-svgrepo-com.png" alt="Epson" class="marca-logo" loading="lazy">
                 </div>
                 <div class="swiper-slide text-center">
-                    <img src="../img/HP_logo_2012.svg.png" alt="HP" class="marca-logo">
+                    <img src="../img/HP_logo_2012.svg.png" alt="HP" class="marca-logo" loading="lazy">
                 </div>
                 <div class="swiper-slide text-center">
-                    <img src="../img/logo-Brother.png" alt="Brother" class="marca-logo">
+                    <img src="../img/logo-Brother.png" alt="Brother" class="marca-logo" loading="lazy">
                 </div>
                 <div class="swiper-slide text-center">
-                    <img src="../img/Canon.webp" alt="Canon" class="marca-logo">
+                    <img src="../img/Canon.webp" alt="Canon" class="marca-logo" loading="lazy">
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="py-5 bg-white">
+    <section class="py-5 bg-white" data-aos="fade-up">
         <div class="container py-4">
             <div class="text-center mb-5" data-aos="fade-up">
                 <h2 class="fw-bold">¿Qué incluye nuestro servicio?</h2>
@@ -156,6 +157,11 @@
         // Le mandamos '..' porque la carpeta /pages/ está un nivel adentro!
         loadComponents('..'); 
     </script>
+
+
+    <!-- AOS Library -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="../js/aos-init.js"></script>
 </body>
 
 </html>
