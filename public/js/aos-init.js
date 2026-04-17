@@ -1,7 +1,4 @@
-// =========================================================
-// INICIALIZACIÓN GLOBAL DE ANIMACIONES DE SCROLL (AOS)
-// Este archivo se debe cargar SIEMPRE después de aos.js
-// =========================================================
+
 if (typeof AOS !== 'undefined') {
     AOS.init({
         duration: 800,
