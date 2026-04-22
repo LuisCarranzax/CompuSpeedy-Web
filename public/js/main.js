@@ -11,7 +11,6 @@ if (document.querySelector('.mySwiper')) {
             disableOnInteraction: false,
         },
         pagination: {
-            // Pequeña mejora: le decimos que busque la paginación SOLO dentro de mySwiper
             el: ".mySwiper .swiper-pagination",
             clickable: true,
         },
@@ -62,11 +61,11 @@ if (document.querySelector('.testimoniosSwiper')) {
 // =========================================================
 if (document.querySelector('.programasSwiper')) {
     const programasSwiper = new Swiper(".programasSwiper", {
-        loop: true,                 // Vuelve a empezar infinitamente
-        speed: 3000,                // La velocidad constante a la que se mueve
-        allowTouchMove: false,      // Evita que el usuario lo arrastre y rompa la ilusión lineal
+        loop: true,
+        speed: 3000,
+        allowTouchMove: false,
         autoplay: {
-            delay: 0,                 // Cero delay = no se detiene nunca
+            delay: 0,
             disableOnInteraction: false,
         },
         slidesPerView: 2,
@@ -86,13 +85,13 @@ if (document.querySelector('.programasSwiper')) {
 if (document.querySelector('.marcasSwiper')) {
     const marcasSwiper = new Swiper(".marcasSwiper", {
         loop: true,
-        speed: 2500,                // Un poquito más rápido que el de programas
-        allowTouchMove: false,      // Bloquea el toque para movimiento continuo lineal
+        speed: 2500,
+        allowTouchMove: false,
         autoplay: {
             delay: 0,
             disableOnInteraction: false,
         },
-        slidesPerView: 3,           // En celular caben 3 marcas
+        slidesPerView: 3,
         spaceBetween: 30,
         breakpoints: {
             768: { slidesPerView: 4 },
@@ -106,13 +105,12 @@ if (document.querySelector('.marcasSwiper')) {
 // =========================================================
 const formulario = document.getElementById('formContacto');
 
-// El IF es crucial: Solo ejecuta este código si el formulario existe en la página actual
 if (formulario) {
     const divRespuestas = document.getElementById('mensaje');
 
     formulario.addEventListener('submit', async (e) => {
         e.preventDefault();
-        
+
         if (!divRespuestas) return;
 
         // Mostrar mensaje de "Enviando..."
@@ -135,7 +133,6 @@ if (formulario) {
                 body: JSON.stringify(datos)
             });
 
-            // Tratamos de procesar JSON, pero en caso de que la respuesta no sea JSON lo controlamos
             let resultado = {};
             try {
                 resultado = await respuesta.json();
@@ -144,25 +141,22 @@ if (formulario) {
             }
 
             if (respuesta.ok) {
-                // Alerta de Éxito Verde
+
                 divRespuestas.className = 'alert alert-success py-2 mb-4 shadow-sm mt-3 text-center fw-bold rounded-3 transition-all';
-                // Añadimos el mensaje de confirmación explícito como pidió el usuario
+
                 const mensajeConfirmacion = '¡Mensaje enviado correctamente! Nos pondremos en contacto contigo pronto.';
                 divRespuestas.innerHTML = `<i class="bi bi-check-circle-fill me-2"></i>${mensajeConfirmacion}`;
                 formulario.reset();
             } else {
-                // Alerta de Error Naranja
                 divRespuestas.className = 'alert alert-warning py-2 mb-4 mt-3 text-center fw-bold rounded-3 transition-all';
                 divRespuestas.innerHTML = `<i class="bi bi-exclamation-triangle-fill me-2"></i>Hubo un error al enviar el mensaje. Intenta de nuevo.`;
             }
         } catch (error) {
             console.error('Error en la petición:', error);
-            // Alerta de Error Roja
             divRespuestas.className = 'alert alert-danger py-2 mb-4 mt-3 text-center fw-bold rounded-3 transition-all';
             divRespuestas.innerHTML = `<i class="bi bi-wifi-off me-2"></i>Error de conexión con el servidor.`;
         }
 
-        // Borrar el mensaje después de 6 segundos
         setTimeout(() => {
             divRespuestas.className = '';
             divRespuestas.innerHTML = '';
