@@ -71,6 +71,18 @@ html {
     transition: all 0.3s ease;
 }
 
+.custom-dropdown .dropdown-item:hover {
+    background-color: transparent !important;
+    color: #0d6efd !important;
+    transform: translateX(8px);
+}
+
+@media (max-width: 991px) {
+    .custom-dropdown .dropdown-item {
+        white-space: normal !important;
+    }
+}
+
 .dropdown-divider.border-secondary {
     border-color: rgba(255, 255, 255, 0.1) !important;
 }
@@ -87,12 +99,6 @@ html {
     .navbar-nav .nav-link:hover {
         color: #0d6efd !important;
         transform: translateY(-2px);
-    }
-
-    .custom-dropdown .dropdown-item:hover {
-        background-color: transparent !important;
-        color: #0d6efd !important;
-        transform: translateX(8px);
     }
 }
 
@@ -223,8 +229,8 @@ html {
 }
 
 .card {
-    transition: transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.3s ease !important;
-    will-change: transform, box-shadow;
+    transition: transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.3s ease, background-color 0.4s ease, color 0.4s ease !important;
+    will-change: transform, box-shadow, background-color;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
     -webkit-transform: translate3d(0, 0, 0);
@@ -281,8 +287,9 @@ html {
     align-items: flex-start;
     margin-bottom: 18px;
     font-size: 1.05rem;
-    color: #495057;
-    transition: transform 0.2s ease;
+    color: var(--bs-body-color);
+    opacity: 0.85;
+    transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
 .custom-modern-list li i {
@@ -293,7 +300,7 @@ html {
 
 .custom-modern-list li:hover {
     transform: translateX(5px);
-    color: #000;
+    opacity: 1;
 }
 
 /* ========================================== */
@@ -361,10 +368,54 @@ html {
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
 }
 
+@media (max-width: 768px) {
+    .floating-socials {
+        bottom: 20px;
+        right: 15px;
+        gap: 10px;
+    }
+
+    .social-bubble {
+        width: 48px;
+        height: 48px;
+        font-size: 24px;
+    }
+}
+
 .wa-bubble {
     background-color: #25D366;
 }
 
 .fb-bubble {
     background-color: #1877F2;
+}
+
+.dark-bubble {
+    background-color: #343a40;
+    /* Color gris oscuro elegante */
+    color: #f8f9fa;
+}
+
+/* Cuando el modo oscuro está activo, el botón podría invertirse para indicar el modo claro */
+[data-bs-theme="dark"] .dark-bubble {
+    background-color: #f8f9fa;
+    color: #343a40;
+}
+
+/* Transiciones suaves generales para el Modo Oscuro */
+body,
+.bg-body,
+.bg-body-tertiary,
+.text-body,
+.text-muted,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+span,
+i {
+    transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
 }

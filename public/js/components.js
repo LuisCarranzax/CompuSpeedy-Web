@@ -22,6 +22,15 @@ async function loadComponents(basePath = '.') {
                 let htmlFooter = await resFooter.text();
                 htmlFooter = htmlFooter.replaceAll('{{base}}', basePath);
                 footerContainer.innerHTML = htmlFooter;
+            
+                // Sincronizar ícono de modo oscuro al cargar el footer
+                if (localStorage.getItem('theme') === 'dark') {
+                    const darkIcon = document.querySelector('#darkModeToggle i');
+                    if (darkIcon) {
+                        darkIcon.classList.remove('bi-moon-stars-fill');
+                        darkIcon.classList.add('bi-sun-fill');
+                    }
+                }
             } else {
                 console.error("No se pudo cargar el footer. Verifica las rutas.");
             }

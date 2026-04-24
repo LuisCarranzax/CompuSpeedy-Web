@@ -163,3 +163,31 @@ if (formulario) {
         }, 6000);
     });
 }
+
+
+// =========================================================
+// MODO OSCURO - EVENT DELEGATION
+// =========================================================
+document.body.addEventListener('click', (e) => {
+    const toggleBtn = e.target.closest('#darkModeToggle');
+    if (toggleBtn) {
+        e.preventDefault();
+        const html = document.documentElement;
+        const currentTheme = html.getAttribute('data-bs-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        
+        html.setAttribute('data-bs-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        
+        const icon = toggleBtn.querySelector('i');
+        if (icon) {
+            if (newTheme === 'dark') {
+                icon.classList.remove('bi-moon-stars-fill');
+                icon.classList.add('bi-sun-fill');
+            } else {
+                icon.classList.remove('bi-sun-fill');
+                icon.classList.add('bi-moon-stars-fill');
+            }
+        }
+    }
+});

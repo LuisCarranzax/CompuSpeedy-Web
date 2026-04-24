@@ -11,6 +11,13 @@
     <link rel="stylesheet" href="css/style.css">
     <title>Compu Speedy | Servicio Técnico</title>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Anti-FOUC para Modo Oscuro -->
+    <script>
+        if (localStorage.getItem('theme') === 'dark') {
+            document.documentElement.setAttribute('data-bs-theme', 'dark');
+        }
+    </script>
 </head>
 
 <body>
@@ -34,7 +41,7 @@
         </div>
     </header>
     <!--Seccion de servicios-->
-    <section id="servicios" class="py-5 bg-light overflow-hidden">
+    <section id="servicios" class="py-5 bg-body-tertiary overflow-hidden">
         <div class="container">
             <h2 class="text-center mb-5 fw-bold">Nuestros Servicios</h2>
 
@@ -123,7 +130,7 @@
         </div>
     </section>
     <!--Seccion de testimonios-->
-    <section id="testimonios" class="py-5 bg-white overflow-hidden">
+    <section id="testimonios" class="py-5 bg-body overflow-hidden">
         <div class="container">
             <h2 class="text-center mb-5 fw-bold">Lo que dicen nuestros clientes</h2>
 
@@ -203,7 +210,7 @@
         </div>
     </section>
     <!--Seccion de contacto-->
-    <section id="contacto" class="py-5 bg-light">
+    <section id="contacto" class="py-5 bg-body-tertiary">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-11">
@@ -211,25 +218,25 @@
                         data-aos-delay="400">
                         <div class="row g-0">
 
-                            <div class="col-lg-7 p-4 p-md-5 bg-white" data-aos="fade-right">
+                            <div class="col-lg-7 p-4 p-md-5 bg-body" data-aos="fade-right">
                                 <h3 class="fw-bold mb-4">Solicitar Servicio Técnico</h3>
                                 <form id="formContacto">
                                     <div class="row g-3">
                                         <div class="col-md-6 mb-3">
-                                            <input type="text" class="form-control form-control-lg bg-light border-0"
+                                            <input type="text" class="form-control form-control-lg bg-body-tertiary border-0"
                                                 id="nombre" placeholder="Tu Nombre" required>
                                         </div>
                                         <div class="col-md-6 mb-3">
-                                            <input type="tel" class="form-control form-control-lg bg-light border-0"
+                                            <input type="tel" class="form-control form-control-lg bg-body-tertiary border-0"
                                                 id="telefono" placeholder="WhatsApp / Celular" required>
                                         </div>
                                     </div>
                                     <div class="mb-3">
-                                        <input type="email" class="form-control form-control-lg bg-light border-0"
+                                        <input type="email" class="form-control form-control-lg bg-body-tertiary border-0"
                                             id="correo" placeholder="Correo Electrónico" required>
                                     </div>
                                     <div class="mb-4">
-                                        <textarea class="form-control form-control-lg bg-light border-0" id="problema"
+                                        <textarea class="form-control form-control-lg bg-body-tertiary border-0" id="problema"
                                             rows="3"
                                             placeholder="¿Qué le sucede a tu equipo? (Ej: No enciende, pantalla rota...)"
                                             required></textarea>

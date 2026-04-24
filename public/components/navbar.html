@@ -9,38 +9,48 @@
 
         <!-- Menú de enlaces para vista Computadora (Escritorio) -->
         <div class="collapse navbar-collapse" id="navbarDesktop">
-            <ul class="navbar-nav ms-auto">
+            <ul class="navbar-nav ms-auto align-items-lg-center">
+
                 <li class="nav-item">
-                    <a class="nav-link text-white opacity-75 fw-bold" href="{{base}}/index.html#inicio">Inicio</a>
+                    <a class="nav-link active" aria-current="page" href="{{base}}/index.html#inicio">Inicio</a>
                 </li>
+
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-white opacity-75 fw-bold" href="#"
-                        id="serviciosDesktopDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
                         Servicios
                     </a>
-                    <ul class="dropdown-menu dropdown-menu-dark custom-dropdown mt-2"
-                        aria-labelledby="serviciosDesktopDropdown">
-                        <li><a class="dropdown-item" href="{{base}}/pages/servicioTecnico.html">Mantenimiento Preventivo
-                                y Correctivo</a></li>
-                        <li><a class="dropdown-item" href="{{base}}/pages/formateo.html">Formateo</a></li>
-                        <li><a class="dropdown-item" href="{{base}}/pages/instalacionProgramas.html">Instalación de
-                                Programas</a></li>
-                        <li><a class="dropdown-item" href="{{base}}/pages/mantenimientoImpresoras.html">Mantenimiento de
-                                Impresoras</a></li>
+                    <ul class="dropdown-menu custom-dropdown border-0 shadow-lg">
+                        <li><a class="dropdown-item" href="{{base}}/pages/servicioTecnico.html"><i
+                                    class="bi bi-wrench me-2"></i>Mantenimiento Preventivo y Correctivo</a></li>
+                        <li><a class="dropdown-item" href="{{base}}/pages/instalacionProgramas.html"><i
+                                    class="bi bi-disc me-2"></i>Instalación
+                                de Programas</a></li>
+                        <li><a class="dropdown-item" href="{{base}}/pages/formateo.html"><i
+                                    class="bi bi-laptop me-2"></i>Formateo de
+                                PC/Laptops</a></li>
+                        <li><a class="dropdown-item" href="{{base}}/pages/mantenimientoImpresoras.html"><i
+                                    class="bi bi-printer me-2"></i>Mantenimiento Impresoras</a></li>
                         <li>
                             <hr class="dropdown-divider border-secondary">
                         </li>
-                        <li><a class="dropdown-item" href="{{base}}/index.html#servicios">Ver todos los servicios</a>
-                        </li>
                     </ul>
                 </li>
+
                 <li class="nav-item">
-                    <a class="nav-link text-white opacity-75 fw-bold"
-                        href="{{base}}/pages/accesorios.html">Accesorios</a>
+                    <a class="nav-link" href="{{base}}/pages/accesorios.html">Accesorios</a>
                 </li>
+
                 <li class="nav-item">
-                    <a class="nav-link text-white opacity-75 fw-bold" href="{{base}}/pages/contacto.html">Contacto</a>
+                    <a class="nav-link" href="{{base}}/pages/nosotros.html">Nosotros</a>
                 </li>
+
+                <li class="nav-item ms-lg-3 mt-3 mt-lg-0">
+                    <a class="btn btn-primary rounded-pill px-4 shadow-sm" href="{{base}}/pages/contacto.html">
+                        <i class="bi bi-chat-dots-fill me-2"></i>Contacto
+                    </a>
+                </li>
+
             </ul>
         </div>
     </div>
@@ -62,29 +72,36 @@
                 <a class="nav-link fs-4 text-white opacity-75" href="{{base}}/index.html#inicio">Inicio</a>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle text-white opacity-75 fw-bold" href="#" id="serviciosDropdown"
-                    role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
                     Servicios
                 </a>
-                <ul class="dropdown-menu dropdown-menu-dark custom-dropdown mt-2" aria-labelledby="serviciosDropdown">
-                    <li><a class="dropdown-item" href="{{base}}/pages/servicioTecnico.html">Mantenimiento Preventivo y
-                            Correctivo</a></li>
-                    <li><a class="dropdown-item" href="{{base}}/pages/formateo.html">Formateo</a></li>
-                    <li><a class="dropdown-item" href="{{base}}/pages/instalacionProgramas.html">Instalación de
-                            Programas</a></li>
-                    <li><a class="dropdown-item" href="{{base}}/pages/mantenimientoImpresoras.html">Mantenimiento de
-                            Impresoras</a></li>
+                <ul class="dropdown-menu custom-dropdown border-0 shadow-lg">
+                    <li><a class="dropdown-item" href="{{base}}/pages/servicioTecnico.html"><i
+                                class="bi bi-wrench me-2"></i>Mantenimiento Preventivo y Correctivo</a></li>
+                    <li><a class="dropdown-item" href="{{base}}/pages/instalacionProgramas.html"><i
+                                class="bi bi-disc me-2"></i>Instalación
+                            de Programas</a></li>
+                    <li><a class="dropdown-item" href="{{base}}/pages/formateo.html"><i
+                                class="bi bi-laptop me-2"></i>Formateo de
+                            PC/Laptops</a></li>
+                    <li><a class="dropdown-item" href="{{base}}/pages/mantenimientoImpresoras.html"><i
+                                class="bi bi-printer me-2"></i>Mantenimiento Impresoras</a></li>
                     <li>
                         <hr class="dropdown-divider border-secondary">
                     </li>
-                    <li><a class="dropdown-item" href="{{base}}/index.html#servicios">Ver todos los servicios</a></li>
                 </ul>
             </li>
             <li class="nav-item mb-3">
                 <a class="nav-link fs-4 text-white opacity-75" href="{{base}}/pages/accesorios.html">Accesorios</a>
             </li>
-            <li class="nav-item mb-3">
-                <a class="nav-link fs-4 text-white opacity-75" href="{{base}}/index.html#contacto">Contacto</a>
+            <li class="nav-item">
+                <a class="nav-link" href="{{base}}/pages/nosotros.html">Nosotros</a>
+            </li>
+            <li class="nav-item ms-lg-3 mt-3 mt-lg-0">
+                <a class="btn btn-primary rounded-pill px-4 shadow-sm" href="{{base}}/pages/contacto.html">
+                    <i class="bi bi-chat-dots-fill me-2"></i>Contacto
+                </a>
             </li>
         </ul>
 

@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mantemiento Impresoras | Compu Speedy</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="icon" type="image/png" href="../img/icon-CompuSpeedy.png">
@@ -10,6 +11,13 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="../css/style.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Anti-FOUC para Modo Oscuro -->
+    <script>
+        if (localStorage.getItem('theme') === 'dark') {
+            document.documentElement.setAttribute('data-bs-theme', 'dark');
+        }
+    </script>
 </head>
 
 <body>
@@ -18,8 +26,7 @@
 
     <header class="hero-modern hero-impresoras text-white text-center d-flex align-items-center">
         <div class="container hero-content">
-            <span
-                class="badge bg-warning text-dark rounded-pill mb-3 px-3 py-2 text-uppercase letter-spacing-2 fw-bold shadow-sm"
+            <span class="badge bg-warning text-dark rounded-pill mb-3 px-3 py-2 text-uppercase letter-spacing-2 fw-bold"
                 data-aos="fade-down">
                 <i class="bi bi-printer-fill me-2"></i>Especialistas Multimarca
             </span>
@@ -36,7 +43,7 @@
             </a>
         </div>
     </header>
-    <section class="py-4 bg-light border-bottom overflow-hidden" data-aos="fade-up">
+    <section class="py-4 bg-body-tertiary border-bottom overflow-hidden" data-aos="fade-up">
         <div class="container text-center mb-3">
             <p class="text-muted fw-bold text-uppercase letter-spacing-2 small mb-0">Trabajamos con las mejores marcas
             </p>
@@ -73,7 +80,7 @@
         </div>
     </section>
 
-    <section class="py-5 bg-white" data-aos="fade-up">
+    <section class="py-5 bg-body" data-aos="fade-up">
         <div class="container py-4">
             <div class="text-center mb-5" data-aos="fade-up">
                 <h2 class="fw-bold">¿Qué incluye nuestro servicio?</h2>
@@ -82,7 +89,8 @@
 
             <div class="row g-4">
                 <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
-                    <div class="card h-100 border-0 shadow-sm rounded-4 p-4 hover-lift">
+                    <div
+                        class="card h-100 border-0 shadow-sm rounded-4 p-4 border-bottom border-5 border-primary hover-lift">
                         <div class="mb-3"><i class="bi bi-gear-wide-connected text-primary fs-1"></i></div>
                         <h4 class="fw-bold">Proceso General</h4>
                         <p class="text-muted small mb-4">Aplica para todos los equipos.</p>
@@ -132,7 +140,8 @@
                         </ul>
                     </div>
                 </div>
-                <div class="mt-5 bg-light p-4 rounded-4 text-center border-start border-5 border-primary shadow-sm">
+                <div
+                    class="mt-5 bg-body-tertiary p-4 rounded-4 text-center border-start border-5 border-primary shadow-sm">
                     <h5 class="mb-0 fw-bold">
                         <i class="bi bi-shield-check text-primary me-2">
                         </i>Garantía de Servicio: <span class="fw-normal text-muted">Los programas tienen tienen un
