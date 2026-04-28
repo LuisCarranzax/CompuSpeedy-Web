@@ -28,7 +28,7 @@ app.post('/api/contacto', async (req, res) =>{
 
     const mailOptions = {
         from: `"Web Soporte Técnico" <${process.env.EMAIL_USER}>`,
-        to: 'luiscqpeind@gmail.com', //Quien recibe el correo.
+        to: process.env.EMAIL_RECIPIENT, //Quien recibe el correo.
         subject: `Nueva solicitud de servicio de: ${nombre}`,
         text: `
             Has recibido una nueva solicitud desde la pagina web:
