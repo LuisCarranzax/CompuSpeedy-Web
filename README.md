@@ -63,3 +63,23 @@ EMAIL_PASS=tu_contrasena_de_aplicacion
 - `EMAIL_USER`: La dirección de correo electrónico desde la cual se enviarán los mensajes.
 - `EMAIL_RECIPIENT`: El correo de destino (a quien le van a llegar las notificaciones de los clientes). _Nota: En tu código está definido como `EMAIL_RECIPIENT` (con "T" al final)._
 - `EMAIL_PASS`: **Esta es la "contraseña de Google"** Ten en cuenta que **NO es tu contraseña normal de Gmail**. Para que funcione, debes generar una **"Contraseña de aplicación"** de 16 letras en los ajustes de seguridad de tu cuenta de Google (requiere tener activa la Verificación en 2 pasos).
+
+## 🐳 Ejecución con Docker
+
+El proyecto ahora cuenta con un archivo `Dockerfile` para ser contenerizado. Para construir y ejecutar la imagen usando Docker, sigue estos pasos:
+
+1. **Crear la Imagen Docker:**
+   Asegúrate de estar en el directorio raíz (donde se encuentra el `Dockerfile`) y ejecuta:
+   ```bash
+   docker build -t compuspeedy-app .
+   ```
+
+2. **Ejecutar el Contenedor:**
+   - **Si ya tienes creado el archivo `.env`:**
+     ```bash
+     docker run -p 3000:3000 --env-file .env compuspeedy-app
+     ```
+   - **En caso de no tener el archivo `.env`:**
+     ```bash
+     docker run -p 3000:3000 compuspeedy-app
+     ```
